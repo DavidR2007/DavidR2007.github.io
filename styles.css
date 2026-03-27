@@ -1,0 +1,522 @@
+/*Configuración general de la web*/
+html, body
+{
+  height: 100%;
+}
+body 
+  {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, footer 
+  {
+    text-align: center;
+    padding: 20px;
+  }
+
+  main
+  {
+    flex: 1;
+  }
+
+
+  /*Estética nº1 del titulo principal*/
+  #title_CV 
+  {
+  font-family: Courier, monospace;
+  font-size: 4em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 30px auto;
+  text-align: center;
+  
+  
+  display: inline-block;          
+  padding: 20px 40px;             
+  border: 3px solid #3498db;      
+  border-radius: 20px;            
+  background: linear-gradient(90deg, #3498db, #002eac);
+  color: white;                   
+  
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .title-center 
+  {
+  text-align: center; /* Centramos el tecto, classe que he usado en algunas <div> */
+  }
+  
+  #title_CV:hover 
+  {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  /* Efecto flotante suave con transform, esta hecho de diferentes formas para que sea compatible con los diferentes navegadores 
+  (es una extension de VSCode)  "css-auto-prefix" */
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -o-transform: translateY(-10px);
+}
+  
+/* Estética de los subtítulos de tamaño <h3> */
+  .title_h3 
+  {
+    font-size: 2em;
+    font-weight: bold;
+    color: #34495e;
+    border-left: 6px double #3498db;
+    padding-left: 12px;
+    padding-left: 10px;
+    margin-top: 25px;
+  }
+/* Estética de los subtítulos de tamaño <h4> */
+  .title_h4 
+  {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #3498db;
+    border-bottom: 2px dashed #9b59b6;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    margin-top: 20px;
+  }
+/* Estética  de los párrafos */
+  .parrf 
+  {
+    font-size: 1em;
+    line-height: 1.6;
+    background: #ffffff;
+    border-left: 4px solid #3498db;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+    margin-left: 5px;
+  }
+/* Estética  de los botones */
+  button 
+  {
+
+    padding: 10px 15px;
+    border: 3px solid #0099ff; 
+    background: #3498db;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover 
+  {
+    background: #2980b9;
+  }
+/* Carrusel*/
+
+.carrusel 
+{
+  width: 1280px;
+  height: auto;
+  margin: 50px auto 0;
+  overflow: hidden;
+}
+
+/* La lista se muestra en fila (flex) y mide 4 “pantallas”:
+  - 3 imágenes originales + 1 imagen duplicada al final
+  Esta imagen duplicada permite que el salto del final al inicio sea suave
+  y se vea como un bucle 1-2-3-1-2-3 sin rebote. */
+
+.carrusel ul 
+{
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 400%;              
+  animation: slide 18s infinite linear; 
+}
+
+.carrusel li 
+{
+  width: 100%;
+  list-style: none;
+  position: relative;
+}
+
+.carrusel img 
+{
+  width: 100%;
+  height: auto;
+}
+
+/* La animación desplaza todo el carrusel desde 0 hasta -300%:
+  -100%: se ve la 2ª imagen
+  -200%: se ve la 3ª imagen
+  -300%: se ve la copia de la 1ª
+  Cuando la animación vuelve de -300% a 0, pasamos de la copia de la 1ª
+   a la 1ª original, por eso el ojo lo percibe como un bucle continuo. */
+@keyframes slide 
+{
+  0%   { margin-left: 0; }
+  100% { margin-left: -300%; }
+}
+
+.multimedia 
+{
+  margin-top: 40px;
+  text-align: center;
+}
+
+.media-container 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.media-card {
+  width: 420px;
+  margin: 40px auto;
+  padding: 25px;
+  color: black;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  text-align: center;
+}
+.media-card img
+{
+  width: 100px;
+  height: 55px;
+}
+.media-card video,
+.media-card audio {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+/* Modo oscuro */
+  .dark-mode 
+  {
+    background-color: #1e1e1e;
+    color: #f9f9f9;
+  }
+  
+  .dark-mode .parrf 
+  {
+    background: #2c2c2c;
+    border-left: 4px solid #ffc400;
+  }
+  
+  .dark-mode .title_h3
+  {
+    color: #f9f9f9;
+    border-left: 6px double #ffc400;
+    padding-left: 10px;
+  }
+  .dark-mode .title_h4
+  {
+    color: white;
+    padding-left: 10px;
+  }
+  .dark-mode a
+  {
+  color: #ffffff;                  
+  text-decoration: underline;      
+  text-decoration-thickness: 1px;  
+  text-underline-offset: 1px;      
+  text-decoration-color: #66b3ff;
+  }
+  .dark-mode #title_CV
+  {
+      background: linear-gradient(90deg, #7700ff, #001969);
+      color: white; 
+      border: 3px solid #391894;  
+  }
+  .dark-mode button
+  {
+    background: #7700ff;
+    border: 3px solid #391894; 
+  }
+  
+  .dark-mode .navs a 
+  {
+    color: black;
+  }
+  
+  .dark-mode .navs a:hover 
+  {
+    background: #7700ff;
+    color: #fff;
+  }
+
+/* Final Dark Mode */
+
+
+
+
+/* Eliminamos vacíos extraños entre imágenes */
+.references
+{
+  display: flex;        
+  gap: 15px;            
+  align-items: center;  
+}
+
+.dark-mode .references .reference_image
+{
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: 3px solid yellow;
+}
+
+/* ul.parrf porque estamos apuntando a todos los <p> dentro de <ul> */
+ul.parrf 
+{
+  list-style-type: disc;     
+  padding-left: 30px;     
+}
+#FotoYo
+{
+  position: absolute;
+  margin: 5px;
+  right: 20px;
+  top: 20px;
+  width: 360px;
+  height: 350px;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+#FotoYo:hover 
+{
+  transform: translateY(-10px); /* flota hacia arriba */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* sombra */
+}
+
+#FotoLogos
+{
+  padding: 40px;
+  border-radius: 15px;
+  object-fit: cover; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#FotoLogos:hover
+{
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.navs 
+{
+  display: flex;
+  justify-content: center;   
+  gap: 20px;                
+  margin-top: 15px;
+}
+
+.navs a 
+{
+  text-decoration: none;
+  color: black;
+  background-color: #bdc3c7;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.navs a:hover 
+{
+  background: #3498db;
+  color: #fff;
+}
+
+/*Trivial*/
+
+.resposta 
+{
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+
+.resposta-correcta 
+{
+  background-color: #8aff8a;
+  color: #0a4d0a;
+  border-color: #00aa00;
+}
+
+.resposta-incorrecta 
+{
+  background-color: #ff8a8a;
+  color: #4d0a0a;
+  border-color: #aa0000;
+}
+
+
+.dark-mode .resposta
+{
+  color: white;
+}
+
+.dark-mode .resposta-correcta
+{
+  background-color: #1f751f;
+  color: #ffffff;
+  border-color: #007000;
+}
+
+.dark-mode .resposta-incorrecta 
+{
+  background-color: #c70000;
+  color: #ffffff;
+  border-color: #aa0000;
+}
+
+/* Contact */
+
+#BodyContact
+{
+  text-align: center;
+}
+
+
+
+#divli 
+{
+  display: inline-block;
+  border: 5px solid #ffc400;
+  padding: 15px;
+  margin: 50px;
+  border-radius: 10px;
+}
+
+#divli button
+{
+  margin-top: 40px;
+}
+
+
+.valid 
+{
+  border: 3px solid green;
+  background-color: #ddffdd;
+}
+
+.invalid 
+{
+  border: 3px solid red;
+  background-color: #ffdddd;
+}
+
+/* Carrusel automático de hobbies */
+.carrusel-hobbies 
+{
+  max-width: 1000px;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.carrusel-hobbies ul 
+{
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 400%;             
+  animation: slide-hobbies 18s infinite linear;
+}
+
+.carrusel-hobbies li 
+{
+  width: 100%;
+  list-style: none;
+}
+
+.carrusel-hobbies figure 
+{
+  margin-left: 60px;
+  margin-right: 60px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.carrusel-hobbies img 
+{
+  width: 100%;
+  height: 800px;
+  object-fit: cover;
+}
+
+.carrusel-hobbies figcaption 
+{
+  padding: 15px;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+/* Animación: se mueve siempre hacia la izquierda, bucle 1-2-3-1... */
+@keyframes slide-hobbies 
+{
+  0%   { margin-left: 0; }
+  100% { margin-left: -300%; } 
+}
+
+/* modo oscuro para hobbies */
+.dark-mode .carrusel-hobbies figure 
+{
+  background: #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.dark-mode .carrusel-hobbies figcaption 
+{
+  color: #f9f9f9;
+}
+
+
+/* Footer */
+
+.site-footer {
+  margin-top: 40px;
+  padding: 15px 10px;
+  text-align: center;
+  background: linear-gradient(90deg, #3498db, #002eac);
+  color: #ffffff;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+
+/* Footer en modo oscuro */
+.dark-mode .site-footer {
+  background: linear-gradient(90deg, #7700ff, #001969);
+}
